@@ -37,6 +37,7 @@ jobs:
           username: ${{secrets.USER}}
           key: ${{secrets.SSH_KEY}}
           script: |
+            source ~/.bashrc
             cd ~/app-turbo-pnpm
             git pull origin main
             cd packages/db && pnpx prisma generate && cd ../..
