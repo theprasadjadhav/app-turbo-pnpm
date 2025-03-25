@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  deploy-everything:
+  deploy-web:
     runs-on: ubuntu-latest
 
     steps:
