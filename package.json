@@ -1,5 +1,5 @@
 {
-  "name": "my-turborepo",
+  "name": "app-turbo-pnpm",
   "private": true,
   "scripts": {
     "build": "turbo run build",
