@@ -42,12 +42,12 @@ jobs:
             nvm use 22
             cd ~/app-turbo-pnpm
             git pull origin main
-            cd packages/db && npx prisma generate && cd ../..
-            npm install --production
+            cd packages/db && pnpx prisma generate && cd ../..
+            pnpm install --production
             cd apps/web
-            npm run build
+            pnpm run build
             export DATABASE_URL=${{secrets.DATABASE_URL}}
-            pm2 restart turbo-app-fe --update-env || pm2 start "npm run start" --name=turbo-app-fe 
+            pm2 restart turbo-app-fe --update-env || pm2 start "pnpm run start" --name=turbo-app-fe 
 
 
 
