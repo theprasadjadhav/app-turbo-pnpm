@@ -37,7 +37,17 @@ jobs:
           username: ${{secrets.USER}}
           key: ${{secrets.SSH_KEY}}
           script: |
-            source ~/.bashrc && cd ~/app-turbo-pnpm && git pull origin main && cd packages/db && pnpm prisma generate && cd ../.. && pnpm install && cd apps/web && pnpm run build && export DATABASE_URL=${{secrets.DATABASE_URL}} && pm2 restart turbo-app-fe --update-env || pm2 start "pnpm run start" --name=turbo-app-fe 
+            export NVM_DIR="$HOME/.nvm"
+            source "$NVM_DIR/nvm.sh"
+            nvm use 22
+            cd ~/app-turbo-pnpm
+            git pull origin main
+            cd packages/db && npx prisma generate && cd ../..
+            npm install --production
+            cd apps/web
+            npm run build
+            export DATABASE_URL=${{secrets.DATABASE_URL}}
+            pm2 restart turbo-app-fe --update-env || pm2 start "npm run start" --name=turbo-app-fe 
 
 
 
