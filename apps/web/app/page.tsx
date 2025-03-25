@@ -17,7 +17,7 @@ export default function Home() {
       <h1>Hello World</h1>
       {users.map((user) => (
         <div key={user.id}>
-          <h2>{user.username}</h2>
+          <h2>{user.username} {user.email}</h2>
         </div>
       ))}
     </div>
